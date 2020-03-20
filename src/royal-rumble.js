@@ -10,7 +10,7 @@ function romanToNum(roman) {
   return 0;
 }
 
-export default function royalRumble(inputs) {
+module.exports = function royalRumble(inputs) {
   return inputs
     .map(n => [n, romanToNum(n.split(' ').pop())])
     .sort((a, b) => a[1] - b[1])
