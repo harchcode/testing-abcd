@@ -12,7 +12,18 @@ function romanToNum(roman) {
 
 module.exports = function royalRumble(inputs) {
   return inputs
-    .map(n => [n, romanToNum(n.split(' ').pop())])
-    .sort((a, b) => a[1] - b[1])
+    .map(n => {
+      const splitted = n.split(' ');
+      const roman = splitted.pop();
+      const name = splitted.join(' ');
+
+      return [n, name, romanToNum(roman)];
+    })
+    .sort((a, b) => {
+      const compare = a[1].localeCompare(b[1]);
+
+      if (compare === 0) return a[2] - b[2];
+      return compare;
+    })
     .map(n => n[0]);
 }
